@@ -41,17 +41,23 @@ router.get("/:email",(req,res)=>{
 });
 
 
-// POST request: Create a new user
+// POST request: Create a new user, C from CRUD
 router.post("/",(req,res)=>{
-  // Copy the code here
-  res.send("Yet to be implemented")//This line is to be replaced with actual return value
+  // push a new user
+  users.push({
+        "firstName": req.query.firstName,
+        "lastName": req.query.lastName,
+        "email": req.query.email,
+        "DOB": req.query.DOB    
+  });
+  // send a success message
+  res.send("The user " + req.query.firstName + " has been added!");
 });
 
 
 // PUT request: Update the details of a user by email ID
 router.put("/:email", (req, res) => {
-  // Copy the code here
-  res.send("Yet to be implemented")//This line is to be replaced with actual return value
+  
 });
 
 
