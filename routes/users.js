@@ -29,14 +29,15 @@ let users = [
 
 // GET request: Retrieve all users
 router.get("/",(req,res)=>{
-  // Copy the code here
-  res.send("Yet to be implemented")//This line is to be replaced with actual return value
+  res.send(users);
 });
 
 // GET by specific ID request: Retrieve a single user with email ID
 router.get("/:email",(req,res)=>{
-  // Copy the code here
-  res.send("Yet to be implemented")//This line is to be replaced with actual return value
+  const email = req.params.email; //extract email parameter from the requested url
+  // filter the users array to find the users with matching email
+  let filtered_users = users.filter((user) => user.email === email);
+  res.send(filtered_users);
 });
 
 
