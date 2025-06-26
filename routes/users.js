@@ -56,8 +56,37 @@ router.post("/",(req,res)=>{
 
 
 // PUT request: Update the details of a user by email ID
-router.put("/:email", (req, res) => {
-  
+  router.put("/:email", (req, res) => {
+    // Extract email parameter and find users with matching email
+    const email = req.params.email;
+    let filtered_users = users.filter((user) => user.email === email);
+    
+    if (filtered_users.length > 0) {
+        // Select the first matching user and update attributes if provided
+        let filtered_user = filtered_users[0];
+        
+        // Extract and update DOB of the query
+        let DOB = req.query.DOB;    
+        if (DOB) {
+            filtered_user.DOB = DOB; // for now, we have a copied object that has an updated DOB
+        }
+
+        // extrac the firs name from the query then update the object in the list
+        let first_name = req.query.firstName;
+        if(first_name){
+          filtered_user.firstName = first_name;
+        }
+
+        // Replace old user entry with updated user       
+        users = users.filter((user) => user.email != email); // it keeps only those users whose email is NOT equal to the given email
+        users.push(filtered_user);
+        
+        // Send success message indicating the user has been updated
+        res.send(`User with the email ${email} updated.`);
+    } else {
+        // Send error message if no user found
+        res.send("Unable to find user!");
+    }
 });
 
 
