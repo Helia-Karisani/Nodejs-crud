@@ -29,7 +29,8 @@ let users = [
 
 // GET request: Retrieve all users
 router.get("/",(req,res)=>{
-  res.send(users);
+  //res.send(users);
+  res.send(JSON.stringify({users}, null, 4));
 });
 
 // GET by specific ID request: Retrieve a single user with email ID
