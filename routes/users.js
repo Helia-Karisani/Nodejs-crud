@@ -1,7 +1,11 @@
-const express = require('express');
-const router = express.Router();
+// this file contains actual logic:	Handles GET, POST, PUT, DELETE for users
 
+const express = require('express'); // loads express
+const router = express.Router(); // creates router objects so I can attach routes to it 
 
+// Acts like a temporary database.
+// This array stores user details in-memory
+// (will reset every time the server restarts)
 let users = [
     {
         firstName: "John",
@@ -56,4 +60,4 @@ router.delete("/:email", (req, res) => {
   res.send("Yet to be implemented")//This line is to be replaced with actual return value
 });
 
-module.exports=router;
+module.exports=router; // Makes this router available to be imported in index.js with
