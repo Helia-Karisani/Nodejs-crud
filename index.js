@@ -5,7 +5,7 @@ const app = express(); // Creates an Express application instance (app)
 const PORT = 5000; // Sets the server to run on port 5000
 
 // Use JSON parsing middleware and user routes
-app.use(express.json());
+app.use(express.json()); // parses incoming requests with JSON payloads
 app.use("/user", routes);
 
 // Start the server and log a message when it's running
